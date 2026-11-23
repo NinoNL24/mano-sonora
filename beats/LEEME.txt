@@ -1,0 +1,34 @@
+TUS BEATS
+
+Cada archivo .mid de esta carpeta es un beat y aparece solo en el menu Beat
+El nombre del boton sale del nombre del archivo: mi_reggaeton.mid -> "Mi reggaeton"
+
+Patrones (.mid)
+---------------
+- Graba el beat en tu bateria MIDI y exportalo como .mid
+- 1 compas de 4/4 (o 2 si lo necesita), el programa lo repite
+- El tempo lo pone el programa (pellizco izquierdo), no el archivo
+- Se respetan los tiempos exactos y la fuerza de cada golpe (velocity)
+  Si quieres que suene "perfecto", cuantiza en tu DAW antes de exportar
+
+Sonidos (.wav) en la carpeta sonidos/
+-------------------------------------
+- Un golpe por archivo, que empiece justo al inicio (sin silencio antes)
+- WAV PCM de 16 o 24 bits, 44.1 o 48 kHz, mono o estereo
+- Cada nota del MIDI busca su sonido asi:
+    1. un archivo con el numero de la nota:  36.wav
+    2. el nombre estandar General MIDI:
+         35, 36 = bombo        38, 40 = tarola       37 = aro
+         42, 44 = hihat        46 = hihat_abierto    39 = aplauso
+         49, 57 = platillo     51, 53, 59 = ride
+         41, 43 = tom_bajo     45, 47 = tom_medio    48, 50 = tom_alto
+         54 = pandero          56 = cencerro
+    3. si tu modulo usa otras notas, crea sonidos/mapa.txt con lineas como:
+         36 = bombo
+         37 = mi_tarola_rara
+
+Para revisar
+------------
+    py probar_audio.py
+Dice que beats encontro, que notas no tienen sonido, y genera
+demos/beat_<nombre>.wav para escuchar cada beat con tus sonidos
