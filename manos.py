@@ -99,7 +99,7 @@ class Mano:
     def puno(self):
         """Indice a menique doblados (el pulgar no cuenta)
 
-        Se usa para "invertir" en Play acordes
+        Es la base de puno_completo()
         """
         return not any(self.arriba[1:])
 
@@ -149,7 +149,8 @@ class Mano:
 
         previo: dedo que pellizcaba en el cuadro anterior; mientras no se
         separe lo suficiente (PELLIZCO_SALE) se conserva ese mismo dedo,
-        asi la nota no cambia de octava sola a medio pellizco
+        asi el pellizco no se suelta solo a medio movimiento
+        En Configurar el pellizco con el indice controla volumen y tempo
         """
         # Distancia de la punta del pulgar a cada punta, en tamanos de mano
         distancias = {d: self.distancia(4, p) / self.tamano
@@ -177,7 +178,7 @@ class Mano:
         """Centro de la palma: promedio de la muneca y los 4 nudillos
 
         Esos puntos casi no se mueven al doblar o juntar los dedos, por eso
-        se usa para elegir la tecla de melodia y para el aplauso
+        se usa para la altura (octava), los pellizcos y el aplauso
         """
         xs = [self.puntos[i][0] for i in (0, 5, 9, 13, 17)]
         ys = [self.puntos[i][1] for i in (0, 5, 9, 13, 17)]
